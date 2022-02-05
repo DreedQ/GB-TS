@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  },
+  "name": "gb-ts",
+  "description": "GB-TS-course",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc src/index.ts --outDir dist --target es2015",
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+
+  },
+  "author": "Pavel G",
+  "license": "ISC"
+}
