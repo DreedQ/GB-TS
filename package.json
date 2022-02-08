@@ -1,17 +1,18 @@
 {
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
+    "eslint": "^8.8.0",
+    "http-server": "^14.1.0",
     "typescript": "^4.5.5"
   },
   "name": "gb-ts",
-  "description": "GB-TS-course",
   "version": "1.0.0",
-  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc src/index.ts --outDir dist --target es2015",
-    "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-
-  },
-  "author": "Pavel G",
-  "license": "ISC"
+    "build": "rd -r public\\scripts 2>null & tsc",
+    "build:dev": "rd -r public\\scripts 2>null & tsc -p tsconfig-dev.json",
+    "start": "http-server -p 3000",
+    "lint": "eslint src --ext .js --ext .ts",
+    "lint-fix": "eslint src --ext .js --ext .ts --fix"
+  }
 }
