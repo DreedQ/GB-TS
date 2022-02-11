@@ -1,6 +1,19 @@
 import { renderBlock } from './lib.js'
 
-export function renderUserBlock (userName: string, userAvatarSrc: string, favoriteItemsAmount: number) {
+const getUserDta = (localStorage):unknown => {
+  return  {
+    username: localStorage.user.username,
+    avatarUrl: localStorage.user.avatarUrl,
+  }
+}
+
+const getFavoritesAmount = (localStorage ):unknown => {
+  return localStorage.favoritesAmount
+}
+
+
+
+export function renderUserBlock (userName: string, userAvatarSrc: string, favoriteItemsAmount?: number) {
   const favoritesCaption = favoriteItemsAmount ? favoriteItemsAmount : 'ничего нет'
   const hasFavoriteItems = favoriteItemsAmount ? true : false
   userName = 'Wade Warren'

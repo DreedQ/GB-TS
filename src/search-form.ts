@@ -1,4 +1,20 @@
 import { renderBlock } from './lib.js'
+import {SearchFormData} from './SearchFormData.js';
+
+const searchHotel = (data)=> {
+  console.log(data);
+}
+
+document.getElementById('search-form-block').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const searchData: SearchFormData = {
+    searchCity: document.getElementById('city').value,
+    dateIn: document.getElementById('check-in-date').value,
+    dateOut: document.getElementById('check-out-date').value,
+    maxPrice: document.getElementById('max-price').value,
+  }
+  searchHotel(searchData);
+})
 
 export function renderSearchFormBlock () {
 
@@ -6,11 +22,11 @@ export function renderSearchFormBlock () {
     const date = new Date();
     const yyyy:number = date.getFullYear()
 
-    let dd:number = date.getDate()+offsetDays;
+    let dd:unknown = date.getDate()+offsetDays;
     if(offsetDays === 32) dd = 31
     if(dd < 10) dd = '0' + dd;
 
-    let mm:number = date.getMonth()+offsetMonth;
+    let mm:unknown = date.getMonth()+offsetMonth;
     if(mm < 10) mm = '0' + mm
 
     return `${yyyy}-${mm}-${dd}`
@@ -20,7 +36,7 @@ export function renderSearchFormBlock () {
     'search-form-block',
     `
     <form>
-      <fieldset class="search-fieldset">
+      <fieldset class="search-fieldset" >
         <div class="row">
           <div>
             <label for="city">Город</label>
