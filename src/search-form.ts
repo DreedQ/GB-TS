@@ -1,5 +1,5 @@
 import { renderBlock } from './lib.js'
-import {SearchFormData} from './SearchFormData.js';
+import {SearchFormData} from './interfaces.js';
 
 const searchHotel = (data)=> {
   console.log(data);
@@ -8,10 +8,10 @@ const searchHotel = (data)=> {
 document.getElementById('search-form-block').addEventListener('submit', (e)=>{
   e.preventDefault();
   const searchData: SearchFormData = {
-    searchCity: document.getElementById('city').value,
-    dateIn: document.getElementById('check-in-date').value,
-    dateOut: document.getElementById('check-out-date').value,
-    maxPrice: document.getElementById('max-price').value,
+    searchCity: e.target[1].value,
+    dateIn: e.target[2].value,
+    dateOut: e.target[3].value,
+    maxPrice: e.target[4].value,
   }
   searchHotel(searchData);
 })
