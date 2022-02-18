@@ -1,4 +1,4 @@
-import {Todo} from "./interfaces.js";
+import {Todo} from './interfaces.js';
 
 export const getTodosByCount = (count) => {
   for(let i = 1; i <= count; i++){
