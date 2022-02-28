@@ -1,10 +1,23 @@
-export function renderBlock (elementId, html) {
-  const element = document.getElementById(elementId)
-  element.innerHTML = html
+export function renderBlock (elementId:string, html:string):void {
+    const element: HTMLElement | null = document.getElementById(elementId)
+    if(element !==null){
+      element.innerHTML = html  
+    }
 }
 
-export function renderToast (message, action) {
-  let messageText = ''
+export interface Message{
+  text:string
+  type?:string
+}
+
+export interface Action {
+  // type?:string
+  name:string
+  handler?: Function
+}
+
+export function renderToast (message:Message, action?:Action):void {
+  let messageText:string = ''
   
   if (message != null) {
     messageText = `
@@ -26,7 +39,7 @@ export function renderToast (message, action) {
       if (action != null && action.handler != null) {
         action.handler()
       }
-      renderToast(null, null)
+      renderToast(message, action)
     }
   }
 }

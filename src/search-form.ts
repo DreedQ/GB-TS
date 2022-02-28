@@ -1,20 +1,26 @@
 import { renderBlock } from './lib.js'
 import {SearchFormData} from './interfaces.js';
 
-const searchHotel = (data)=> {
+const searchHotel = (data:SearchFormData)=> {
   console.log(data);
 }
 
-document.getElementById('search-form-block').addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const searchData: SearchFormData = {
-    searchCity: e.target[1].value,
-    dateIn: e.target[2].value,
-    dateOut: e.target[3].value,
-    maxPrice: e.target[4].value,
-  }
-  searchHotel(searchData);
-})
+const searchForm = (document.getElementById('search-form-block'));
+if(searchForm){
+ 
+  searchForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    console.log(e.target)
+    // const searchData: SearchFormData = {
+    //   searchCity: e.target[1].value,
+    //   dateIn: e.target[2].value,
+    //   dateOut: e.target[3].value,
+    //   maxPrice: e.target[4].value,
+    // }
+    // searchHotel(searchData);
+  })
+}
+
 
 export function renderSearchFormBlock () {
 
@@ -22,11 +28,11 @@ export function renderSearchFormBlock () {
     const date = new Date();
     const yyyy:number = date.getFullYear()
 
-    let dd:unknown = date.getDate()+offsetDays;
+    let dd:string | number = date.getDate()+offsetDays;
     if(offsetDays === 32) dd = 31
     if(dd < 10) dd = '0' + dd;
 
-    let mm:unknown = date.getMonth()+offsetMonth;
+    let mm:string | number = date.getMonth()+offsetMonth;
     if(mm < 10) mm = '0' + mm
 
     return `${yyyy}-${mm}-${dd}`

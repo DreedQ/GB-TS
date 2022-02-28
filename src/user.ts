@@ -1,13 +1,20 @@
 import { renderBlock } from './lib.js'
 
-const getUserDta = (localStorage):unknown => {
+export interface StorageData{
+  user:{
+    username:string,
+    avatarUrl:string
+},
+  favoritesAmount:string
+}
+const getUserDta = (localStorage:StorageData):unknown => {
   return  {
     username: localStorage.user.username,
     avatarUrl: localStorage.user.avatarUrl,
   }
 }
 
-const getFavoritesAmount = (localStorage ):unknown => {
+const getFavoritesAmount = (localStorage:StorageData ):unknown => {
   return localStorage.favoritesAmount
 }
 
